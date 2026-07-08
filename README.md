@@ -1,4 +1,4 @@
-# The Spice Road ◈
+# ◈ The Spice Road ◈
 
 _A full-cockpit terminal theme for WSL2 & Windows Terminal — Dune + Indian Subculture inspired_
 
