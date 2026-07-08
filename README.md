@@ -27,9 +27,7 @@ _What's left once the banner's done its job._
 
 _The palette that everything else is built from._
 
-_A GIF walkthrough is coming soon._
-
-<!-- placeholder: screenshots/demo.gif -->
+![GIF walkthrough of the full Spice Road boot sequence](screenshots/demo.gif)
 
 If this is the kind of thing you'd want waiting for you every time you open a terminal, ⭐ starring the repo helps more people stumble onto it.
 
@@ -178,4 +176,3 @@ None of this exists without the tools doing the actual work underneath it: Stars
 The road's marked. Where you take it from here is yours.
 
 - Made with ❤️ by Aditya Jha
-
