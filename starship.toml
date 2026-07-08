@@ -1,0 +1,133 @@
+# ~/.config/starship.toml
+# "Spice Road" — 60% Dune desert-mirage sci-fantasy, 40% Rajasthani bazaar maximalism
+#
+# Layout: three rows.
+#   Row 1 (top, bronze frame)    — identity/context badges: where you are, what you're in
+#   Row 2 (middle, bronze frame) — system pulse: live numbers, plain colored text
+#   Row 3 (bottom, bronze frame) — the actual input line + right-aligned clock
+
+add_newline = true
+command_timeout = 1000
+
+format = """
+[┌─](fg:#8C6239)$directory$git_branch$git_status$python$nodejs$docker_context$aws$gcloud$azure$hostname
+[│ ](fg:#8C6239)$jobs$memory_usage${custom.load}${custom.net_ok}${custom.net_down}${custom.battery}$cmd_duration$status
+[└─](fg:#8C6239)$character"""
+
+right_format = "$time"
+
+# ---------- Row 1: context badges (filled pills) ----------
+
+[directory]
+style = "bg:#8C6239 fg:#F2E6D8"
+truncation_length = 3
+truncate_to_repo = true
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+read_only = " 🔒"
+read_only_style = "fg:#E8623A"
+
+[git_branch]
+style = "bg:#1F2A44 fg:#F2E6D8"
+format = "[ $symbol$branch ]($style)"
+
+[git_status]
+style = "bg:#B5502D fg:#F2E6D8"
+format = "[ $all_status$ahead_behind ]($style)"
+
+[python]
+style = "bg:#E8A33D fg:#14100D"
+format = "[ $symbol$pyenv_prefix($version)(\\($virtualenv\\)) ]($style)"
+
+[nodejs]
+style = "bg:#7C8B3D fg:#14100D"
+format = "[ $symbol($version) ]($style)"
+
+[docker_context]
+style = "bg:#14555A fg:#F2E6D8"
+format = "[ $symbol$context ]($style)"
+only_with_files = true
+
+[aws]
+style = "bg:#9B2C2C fg:#F2E6D8"
+format = "[ $symbol$profile ]($style)"
+disabled = false
+
+[gcloud]
+style = "bg:#6A87B8 fg:#14100D"
+format = "[ $symbol$account ]($style)"
+disabled = false
+
+[azure]
+style = "bg:#3E5578 fg:#F2E6D8"
+format = "[ $symbol$subscription ]($style)"
+disabled = false
+
+[hostname]
+ssh_only = true
+style = "bg:#7B3F61 fg:#F2E6D8"
+format = "[ ⇢ $hostname ]($style)"
+disabled = false
+
+# ---------- Row 2: system pulse (plain colored text) ----------
+
+[jobs]
+style = "fg:#B87333"
+symbol = "⚙ "
+number_threshold = 1
+format = "[$symbol$number]($style) "
+
+[memory_usage]
+disabled = false
+threshold = 60
+style = "fg:#B0609E"
+format = "[ $symbol$ram_pct]($style) "
+
+[cmd_duration]
+min_time = 2000
+style = "fg:#6B5D4F"
+format = "[⏱ $duration]($style) "
+
+[status]
+disabled = false
+style = "bg:#E8623A fg:#14100D bold"
+format = "[ ✗$status ]($style) "
+
+[custom.load]
+command = "uptime | awk -F'load average: ' '{print $2}' | awk -F',' '{print $1}' | xargs"
+style = "fg:#D4AF37"
+format = "[◆ $output]($style) "
+shell = ["bash", "--norc"]
+
+# --- Network indicator (diamond) ---
+[custom.net_ok]
+command = "echo ◆"
+when = "ip route get 1.1.1.1 >/dev/null 2>&1"
+style = "fg:#A8BB5C"
+format = "[$output]($style) "
+shell = ["bash", "--norc"]
+
+[custom.net_down]
+command = "echo ◇"
+when = "! ip route get 1.1.1.1 >/dev/null 2>&1"
+style = "fg:#E8623A bold"
+format = "[$output]($style) "
+shell = ["bash", "--norc"]
+
+[custom.battery]
+command = "bash ~/.config/starship-helpers/battery.sh"
+style = "fg:#F2C14E"
+format = "[$output]($style) "
+shell = ["bash", "--norc"]
+
+# ---------- Row 3: input line ----------
+
+[character]
+success_symbol = "[◈](bold fg:#E8A33D)"
+error_symbol = "[◈](bold fg:#E8623A)"
+vimcmd_symbol = "[◈](bold fg:#4FB8AC)"
+
+[time]
+disabled = false
+time_format = "%H:%M"
+style = "fg:#C9B79C"
+format = "[$time]($style)"

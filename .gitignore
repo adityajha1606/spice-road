@@ -1,0 +1,16 @@
+# Python bytecode and caches
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Temporary and editor files
+*.tmp
+*.log
+*.swp
+*~
+
+# OS metadata (macOS & Windows)
+.DS_Store
+Thumbs.db
+Desktop.ini

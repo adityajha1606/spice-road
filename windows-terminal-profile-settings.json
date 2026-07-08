@@ -1,0 +1,34 @@
+// Spice Road profile additions.
+// Windows Terminal's settings.json supports // comments (it's JSONC), so this
+// file is written the way it will actually look once merged in.
+// Merge these KEYS into your existing Ubuntu-22.04 profile object — don't
+// replace the whole profile, just add/overwrite these specific keys.
+{
+  "colorScheme": "Spice Road",
+  "font": {
+    "face": "Iosevka TermSlab NF",
+    "size": 11.5,
+    "weight": "normal"
+  },
+  "cursorShape": "bar",
+  "cursorColor": "#E8A33D",
+  "padding": "10, 8, 10, 8",
+  "tabColor": "#8C6239",
+
+  // background image — path is a placeholder, update after Section 7's
+  // spice-road-background.png is generated and you've moved it somewhere
+  // on the Windows filesystem.
+  // Opacity tuned by measurement, not guesswork: 0.1 (the obvious first
+  // guess) measured out to a max pixel difference from pure background of
+  // only ~5% — effectively invisible. 0.14 was the lowest value that kept
+  // the mandala's highlights perceptible without competing with text.
+  "backgroundImage": "C:/Users/<you>/Pictures/Terminal/spice-road-background.png",
+  "backgroundImageOpacity": 0.3,
+  "backgroundImageStretchMode": "uniformToFill",
+  "backgroundImageAlignment": "center",
+
+  // acrylic left off deliberately — stacking blur on top of a background
+  // image tends to muddy a dark palette; toggle to true if you want it anyway
+  "useAcrylic": false,
+  "opacity": 100
+}

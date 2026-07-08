@@ -1,0 +1,23 @@
+{
+  "name": "Spice Road",
+  "background": "#14100D",
+  "foreground": "#F2E6D8",
+  "cursorColor": "#E8A33D",
+  "selectionBackground": "#4A3423",
+  "black": "#1A1410",
+  "red": "#B5502D",
+  "green": "#7C8B3D",
+  "yellow": "#E8A33D",
+  "blue": "#3E5578",
+  "purple": "#7B3F61",
+  "cyan": "#2E8C82",
+  "white": "#D9C7A3",
+  "brightBlack": "#6B5D4F",
+  "brightRed": "#E8623A",
+  "brightGreen": "#A8BB5C",
+  "brightYellow": "#F2C14E",
+  "brightBlue": "#6A87B8",
+  "brightPurple": "#B0609E",
+  "brightCyan": "#4FB8AC",
+  "brightWhite": "#F2E6D8"
+}
