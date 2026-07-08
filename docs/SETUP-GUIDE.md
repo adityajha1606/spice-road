@@ -168,7 +168,7 @@ Now open `zshrc-additions.zsh`, scroll down to the line that says `# PART B`, an
 If you want the optional cache pre‑warmer (`spice-prefetch.zsh`), look for the line that says `source $ZSH/oh-my-zsh.sh` and add this **right above** it:
 
 ```bash
-[[ -f "$HOME/.config/spice-road/spice-prefetch.zsh" ]] && source "$HOME/.config/spice-road/spice-prefetch.sh"
+[[ -f "$HOME/.config/spice-road/spice-prefetch.zsh" ]] && source "$HOME/.config/spice-road/spice-prefetch.zsh"
 ```
 
 Then copy the prefetch script itself:

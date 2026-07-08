@@ -268,14 +268,14 @@ copy_runtime_files() {
     _copy_if_exists "welcome-banner.zsh"          "$HOME/.config/spice-road/welcome-banner.zsh"
     _copy_if_exists "banner-art.zsh"              "$HOME/.config/spice-road/banner-art.zsh"
     _copy_if_exists "weather-check.sh"            "$HOME/.config/spice-road/weather-check.sh"
-    _copy_if_exists "spice-prefetch.sh"           "$HOME/.config/spice-road/spice-prefetch.sh"
+    _copy_if_exists "spice-prefetch.zsh"           "$HOME/.config/spice-road/spice-prefetch.sh"
     _copy_if_exists "battery.sh"                  "$HOME/.config/starship-helpers/battery.sh"
     _copy_if_exists "battery-refresh.sh"          "$HOME/.config/starship-helpers/battery-refresh.sh"
     _copy_if_exists "fastfetch-config-full.jsonc" "$HOME/.config/fastfetch/config.jsonc"
     _copy_if_exists "fastfetch-config-safe.jsonc" "$HOME/.config/fastfetch/fastfetch-config-safe.jsonc"
 
     log "Setting execute permissions..."
-    for f in battery.sh battery-refresh.sh weather-check.sh spice-prefetch.sh; do
+    for f in battery.sh battery-refresh.sh weather-check.sh spice-prefetch.zsh; do
         for dir in "$HOME/.config/starship-helpers" "$HOME/.config/spice-road"; do
             if [[ -f "$dir/$f" ]]; then
                 run "chmod +x '$dir/$f'"
@@ -511,7 +511,7 @@ PS1EOF
 }
 
 # ─────────────────────────────────────────────────────────────────────────
-#  Step 10 — Optional: spice-prefetch.sh activation
+#  Step 10 — Optional: spice-prefetch.zsh activation
 # ─────────────────────────────────────────────────────────────────────────
 
 maybe_enable_prefetch() {
@@ -537,7 +537,7 @@ maybe_enable_prefetch() {
             tmp=$(mktemp)
             {
                 echo "$marker"
-                echo '[[ -f "$HOME/.config/spice-road/spice-prefetch.sh" ]] && source "$HOME/.config/spice-road/spice-prefetch.sh"'
+                echo '[[ -f "$HOME/.config/spice-road/spice-prefetch.zsh" ]] && source "$HOME/.config/spice-road/spice-prefetch.sh"'
                 echo ""
                 cat "$zshrc"
             } > "$tmp"
