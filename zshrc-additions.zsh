@@ -35,7 +35,7 @@
 
 # ════════════════════════════════════════════════════════════════════
 # PART C — optional, near the very TOP of .zshrc (a different spot than
-# Part B) — only if you want spice-prefetch.sh's early cache warm-up
+# Part B) — only if you want spice-prefetch.zsh's early cache warm-up
 # ════════════════════════════════════════════════════════════════════
 #
 # This is optional. It buys the first prompt of a session a better chance
@@ -44,7 +44,7 @@
 # this changes nothing about correctness — battery/weather still populate
 # themselves within their normal staleness window either way.
 #
-#   [[ -f "$HOME/.config/spice-road/spice-prefetch.sh" ]] && source "$HOME/.config/spice-road/spice-prefetch.sh"
+#   [[ -f "$HOME/.config/spice-road/spice-prefetch.zsh" ]] && source "$HOME/.config/spice-road/spice-prefetch.sh"
 #
 # Place that line as early as possible — before the oh-my-zsh sourcing
 # line is fine — since every line of .zshrc that runs before it delays

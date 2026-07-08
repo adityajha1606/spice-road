@@ -17,7 +17,7 @@ palette.py                          windows-terminal-profile-settings.json
 windows-terminal-scheme.json        ls_colors.zsh
 starship.toml                       battery.sh
 battery-refresh.sh                  welcome-banner.zsh
-weather-check.sh                    spice-prefetch.sh          (optional)
+weather-check.sh                    spice-prefetch.zsh          (optional)
 banner-art.zsh                      generate_banner_art.py
 fastfetch-config-full.jsonc         fastfetch-config-safe.jsonc
 zshrc-additions.zsh                 .pre-commit-config.yaml
@@ -165,16 +165,16 @@ plugins=(git zsh-autosuggestions zsh-completions fzf-tab zsh-syntax-highlighting
 
 Now open `zshrc-additions.zsh`, scroll down to the line that says `# PART B`, and copy everything from there to the very end. Paste that at the **end** of your `~/.zshrc`.
 
-If you want the optional cache pre‑warmer (`spice-prefetch.sh`), look for the line that says `source $ZSH/oh-my-zsh.sh` and add this **right above** it:
+If you want the optional cache pre‑warmer (`spice-prefetch.zsh`), look for the line that says `source $ZSH/oh-my-zsh.sh` and add this **right above** it:
 
 ```bash
-[[ -f "$HOME/.config/spice-road/spice-prefetch.sh" ]] && source "$HOME/.config/spice-road/spice-prefetch.sh"
+[[ -f "$HOME/.config/spice-road/spice-prefetch.zsh" ]] && source "$HOME/.config/spice-road/spice-prefetch.sh"
 ```
 
 Then copy the prefetch script itself:
 ```bash
-cp spice-prefetch.sh ~/.config/spice-road/
-chmod +x ~/.config/spice-road/spice-prefetch.sh
+cp spice-prefetch.zsh ~/.config/spice-road/
+chmod +x ~/.config/spice-road/spice-prefetch.zsh
 ```
 
 ---
