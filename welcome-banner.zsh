@@ -61,36 +61,13 @@ echo
 # ---------- divider ----------
 sr_line "$BRONZE" "$SR_DIVIDER"
 
-# ---------- weather (cached, non-blocking — never calls curl on the critical path) ----------
+# ---------- weather (cached, non-blocking — logic lives in weather-check.sh
+# so spice-prefetch.sh can reuse the exact same lock/staleness handling
+# rather than duplicating it) ----------
 SR_CACHE_DIR="$HOME/.cache/spice-road"
 mkdir -p "$SR_CACHE_DIR"
-WEATHER_CACHE="$SR_CACHE_DIR/weather"
-WEATHER_LOCK="$SR_CACHE_DIR/weather.lock"
-WEATHER_MAX_AGE=1500  # 25 minutes
-
-w_age=999999
-[[ -f "$WEATHER_CACHE" ]] && w_age=$(( $(date +%s) - $(stat -c %Y "$WEATHER_CACHE" 2>/dev/null || echo 0) ))
-
-if (( w_age > WEATHER_MAX_AGE )) && [[ ! -e "$WEATHER_LOCK" ]]; then
-  touch "$WEATHER_LOCK"
-  nohup zsh -c "
-    curl -s --max-time 3 'wttr.in/?format=3' > '$WEATHER_CACHE.tmp' 2>/dev/null
-    # sanity-check the response before trusting it — a captive portal, proxy
-    # error page, or blocked-host message can return HTTP 200 with garbage
-    # body, which curl alone won't detect as a failure
-    if grep -qE '°[CF]' '$WEATHER_CACHE.tmp' 2>/dev/null \
-       && [[ \$(wc -c < '$WEATHER_CACHE.tmp' 2>/dev/null || echo 0) -lt 200 ]]; then
-      mv '$WEATHER_CACHE.tmp' '$WEATHER_CACHE'
-    else
-      rm -f '$WEATHER_CACHE.tmp'
-    fi
-    rm -f '$WEATHER_LOCK'
-  " >/dev/null 2>&1 &!
-fi
-
-if [[ -s "$WEATHER_CACHE" ]]; then
-  sr_line "$MUTED" "  $(cat "$WEATHER_CACHE")"
-fi
+WEATHER_LINE="$(bash "$SR_DIR/weather-check.sh" 2>/dev/null)"
+[[ -n "$WEATHER_LINE" ]] && sr_line "$MUTED" "  $WEATHER_LINE"
 
 # ---------- quote of the moment ----------
 # Original aphorisms written for this project, deliberately not quotations

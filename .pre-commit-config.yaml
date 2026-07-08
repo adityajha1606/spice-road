@@ -1,0 +1,32 @@
+repos:
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.9.0.6
+    hooks:
+      - id: shellcheck
+        files: \.sh$
+
+  - repo: local
+    hooks:
+      - id: zsh-syntax-check
+        name: zsh syntax check (zsh -n)
+        entry: zsh -n
+        language: system
+        files: \.zsh$
+
+  - repo: local
+    hooks:
+      - id: validate-jsonc
+        name: validate JSON/JSONC files (comment-tolerant)
+        entry: python3 -c "import json5,sys; [json5.load(open(f)) for f in sys.argv[1:]]"
+        language: python
+        additional_dependencies: ['json5']
+        files: \.(json|jsonc)$
+
+  - repo: local
+    hooks:
+      - id: validate-toml
+        name: validate TOML files
+        entry: python3 -c "import sys; m = __import__('tomllib' if sys.version_info >= (3, 11) else 'tomli', fromlist=['load']); [m.load(open(f, 'rb')) for f in sys.argv[1:]]"
+        language: python
+        additional_dependencies: ['tomli']
+        files: \.toml$
