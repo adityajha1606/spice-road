@@ -87,6 +87,24 @@ Row 1 (bronze `┌─`) is context — where you are, what branch you're on, whi
 
 ---
 
+## Tech Stack
+
+[![Starship](https://img.shields.io/badge/Starship-prompt%20engine-D4AF37?style=flat&logo=starship&logoColor=white)](https://starship.rs)
+[![Zsh](https://img.shields.io/badge/Zsh-shell-9B2C2C?style=flat&logo=zsh&logoColor=white)](#)
+[![oh-my-zsh](https://img.shields.io/badge/oh--my--zsh-framework-7B3F61?style=flat&logo=oh-my-zsh&logoColor=white)](https://ohmyz.sh)
+[![fastfetch](https://img.shields.io/badge/fastfetch-system%20info-3E5578?style=flat)](#)
+[![eza](https://img.shields.io/badge/eza-modern%20ls-7C8B3D?style=flat)](#)
+[![bat](https://img.shields.io/badge/bat-syntax%20highlighting-8C6239?style=flat)](#)
+[![fzf](https://img.shields.io/badge/fzf-fuzzy%20finder-E8A33D?style=flat&logo=fzf&logoColor=white)](#)
+[![zoxide](https://img.shields.io/badge/zoxide-smart%20cd-B87333?style=flat)](#)
+[![Nerd Font](https://img.shields.io/badge/Iosevka%20TermSlab%20NF-font-C9B79C?style=flat&logo=nerd-fonts&logoColor=white)](#)
+[![Windows Terminal](https://img.shields.io/badge/Windows%20Terminal-host-4A3423?style=flat&logo=windows-terminal&logoColor=white)](#)
+[![WSL2](https://img.shields.io/badge/WSL2-subystem-14100D?style=flat&logo=linux&logoColor=white)](#)
+[![Palette](https://img.shields.io/badge/palette.py-28%20colors-6B3A1F?style=flat&logo=python&logoColor=white)](#)
+[![MIT License](https://img.shields.io/badge/license-MIT-3E5578?style=flat)](LICENSE)
+
+---
+
 ## Installation
 
 **Prerequisites:** WSL2, Ubuntu 22.04, Windows Terminal.
