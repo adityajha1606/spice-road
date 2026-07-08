@@ -24,6 +24,7 @@ _The full boot sequence - everything below happens before you type a single comm
 _What's left once the banner's done its job._
 
 ![Output of preview-colors.sh, showing all 28 named colors in the palette as swatches.](screenshots/colors-preview.png)
+
 _The palette that everything else is built from._
 
 _A GIF walkthrough is coming soon._
