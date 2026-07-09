@@ -540,6 +540,7 @@ maybe_enable_prefetch() {
             tmp=$(mktemp)
             {
                 echo "$marker"
+                # shellcheck disable=SC2016
                 echo '[[ -f "$HOME/.config/spice-road/spice-prefetch.zsh" ]] && source "$HOME/.config/spice-road/spice-prefetch.zsh"'
                 echo ""
                 cat "$zshrc"
