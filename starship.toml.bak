@@ -1,4 +1,3 @@
-# Auto-generated from palette.py by render.py — do not hand-edit
 # ~/.config/starship.toml
 # "Spice Road" — 60% Dune desert-mirage sci-fantasy, 40% Rajasthani bazaar maximalism
 #
@@ -99,6 +98,7 @@ style = "fg:#D4AF37"
 format = "[◆ $output]($style) "
 shell = ["bash", "--norc"]
 
+# --- Network indicator (diamond) ---
 [custom.net_ok]
 command = "echo ◆"
 when = "ip route get 1.1.1.1 >/dev/null 2>&1"

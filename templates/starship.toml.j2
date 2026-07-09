@@ -11,68 +11,68 @@ add_newline = true
 command_timeout = 1000
 
 format = """
-[┌─](fg:#8C6239)$directory$git_branch$git_status$python$nodejs$docker_context$aws$gcloud$azure$hostname
-[│ ](fg:#8C6239)$jobs$memory_usage${custom.load}${custom.net_ok}${custom.net_down}${custom.battery}$cmd_duration$status
-[└─](fg:#8C6239)$character"""
+[┌─](fg:{{ styles.frame_color }})$directory$git_branch$git_status$python$nodejs$docker_context$aws$gcloud$azure$hostname
+[│ ](fg:{{ styles.frame_color }})$jobs$memory_usage${custom.load}${custom.net_ok}${custom.net_down}${custom.battery}$cmd_duration$status
+[└─](fg:{{ styles.frame_color }})$character"""
 
 right_format = "$time"
 
 # ---------- Row 1: context badges (filled pills) ----------
 
 [directory]
-style = "bg:#8C6239 fg:#F2E6D8"
+style = "{{ styles.directory_style }}"
 truncation_length = 3
 truncate_to_repo = true
 format = "[ $path ]($style)[$read_only]($read_only_style)"
 read_only = " 🔒"
-read_only_style = "fg:#E8623A"
+read_only_style = "{{ styles.directory_readonly }}"
 
 [git_branch]
-style = "bg:#1F2A44 fg:#F2E6D8"
+style = "{{ styles.git_branch_style }}"
 format = "[ $symbol$branch ]($style)"
 
 [git_status]
-style = "bg:#B5502D fg:#F2E6D8"
+style = "{{ styles.git_status_style }}"
 format = "[ $all_status$ahead_behind ]($style)"
 
 [python]
-style = "bg:#E8A33D fg:#14100D"
+style = "{{ styles.python_style }}"
 format = "[ $symbol$pyenv_prefix($version)(\\($virtualenv\\)) ]($style)"
 
 [nodejs]
-style = "bg:#7C8B3D fg:#14100D"
+style = "{{ styles.nodejs_style }}"
 format = "[ $symbol($version) ]($style)"
 
 [docker_context]
-style = "bg:#14555A fg:#F2E6D8"
+style = "{{ styles.docker_style }}"
 format = "[ $symbol$context ]($style)"
 only_with_files = true
 
 [aws]
-style = "bg:#9B2C2C fg:#F2E6D8"
+style = "{{ styles.aws_style }}"
 format = "[ $symbol$profile ]($style)"
 disabled = false
 
 [gcloud]
-style = "bg:#6A87B8 fg:#14100D"
+style = "{{ styles.gcloud_style }}"
 format = "[ $symbol$account ]($style)"
 disabled = false
 
 [azure]
-style = "bg:#3E5578 fg:#F2E6D8"
+style = "{{ styles.azure_style }}"
 format = "[ $symbol$subscription ]($style)"
 disabled = false
 
 [hostname]
 ssh_only = true
-style = "bg:#7B3F61 fg:#F2E6D8"
+style = "{{ styles.hostname_style }}"
 format = "[ ⇢ $hostname ]($style)"
 disabled = false
 
 # ---------- Row 2: system pulse (plain colored text) ----------
 
 [jobs]
-style = "fg:#B87333"
+style = "{{ styles.jobs_style }}"
 symbol = "⚙ "
 number_threshold = 1
 format = "[$symbol$number]($style) "
@@ -80,54 +80,54 @@ format = "[$symbol$number]($style) "
 [memory_usage]
 disabled = false
 threshold = 60
-style = "fg:#B0609E"
+style = "{{ styles.memory_style }}"
 format = "[ $symbol$ram_pct]($style) "
 
 [cmd_duration]
 min_time = 2000
-style = "fg:#6B5D4F"
+style = "{{ styles.cmd_duration_style }}"
 format = "[⏱ $duration]($style) "
 
 [status]
 disabled = false
-style = "bg:#E8623A fg:#14100D bold"
+style = "{{ styles.status_style }}"
 format = "[ ✗$status ]($style) "
 
 [custom.load]
 command = "uptime | awk -F'load average: ' '{print $2}' | awk -F',' '{print $1}' | xargs"
-style = "fg:#D4AF37"
+style = "{{ styles.load_style }}"
 format = "[◆ $output]($style) "
 shell = ["bash", "--norc"]
 
 [custom.net_ok]
 command = "echo ◆"
 when = "ip route get 1.1.1.1 >/dev/null 2>&1"
-style = "fg:#A8BB5C"
+style = "{{ styles.net_ok_style }}"
 format = "[$output]($style) "
 shell = ["bash", "--norc"]
 
 [custom.net_down]
 command = "echo ◇"
 when = "! ip route get 1.1.1.1 >/dev/null 2>&1"
-style = "fg:#E8623A bold"
+style = "{{ styles.net_down_style }}"
 format = "[$output]($style) "
 shell = ["bash", "--norc"]
 
 [custom.battery]
 command = "bash ~/.config/starship-helpers/battery.sh"
-style = "fg:#F2C14E"
+style = "{{ styles.battery_style }}"
 format = "[$output]($style) "
 shell = ["bash", "--norc"]
 
 # ---------- Row 3: input line ----------
 
 [character]
-success_symbol = "[◈](bold fg:#E8A33D)"
-error_symbol = "[◈](bold fg:#E8623A)"
-vimcmd_symbol = "[◈](bold fg:#4FB8AC)"
+success_symbol = "[◈]({{ styles.character_success }})"
+error_symbol = "[◈]({{ styles.character_error }})"
+vimcmd_symbol = "[◈]({{ styles.character_vimcmd }})"
 
 [time]
 disabled = false
 time_format = "%H:%M"
-style = "fg:#C9B79C"
+style = "{{ styles.time_style }}"
 format = "[$time]($style)"

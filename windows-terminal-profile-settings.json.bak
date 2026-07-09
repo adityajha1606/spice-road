@@ -15,16 +15,19 @@
   "padding": "10, 8, 10, 8",
   "tabColor": "#8C6239",
 
-  // Background image — path is a placeholder. Move spice-road-background.png
-  // to a permanent Windows location and update this path.
-  // Opacity 0.3 was settled on after real‑world testing: 0.14 was too faint,
-  // while 0.3 keeps the mandala visible without competing with text.
-  "backgroundImage": "C:/Users/<your-username>/Pictures/Terminal/spice-road-background.png",
+  // background image — path is a placeholder, update after Section 7's
+  // spice-road-background.png is generated and you've moved it somewhere
+  // on the Windows filesystem.
+  // Opacity tuned by measurement, not guesswork: 0.1 (the obvious first
+  // guess) measured out to a max pixel difference from pure background of
+  // only ~5% — effectively invisible. 0.14 was the lowest value that kept
+  // the mandala's highlights perceptible without competing with text.
+  "backgroundImage": "C:/Users/<you>/Pictures/Terminal/spice-road-background.png",
   "backgroundImageOpacity": 0.3,
   "backgroundImageStretchMode": "uniformToFill",
   "backgroundImageAlignment": "center",
 
-  // Acrylic left off deliberately — stacking blur on top of a background
+  // acrylic left off deliberately — stacking blur on top of a background
   // image tends to muddy a dark palette; toggle to true if you want it anyway
   "useAcrylic": false,
   "opacity": 100

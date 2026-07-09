@@ -21,6 +21,12 @@ if [ -f "$CACHE" ]; then
   age=$(( $(date +%s) - $(stat -c %Y "$CACHE" 2>/dev/null || echo 0) ))
 fi
 
+# Remove lock if it's stale (older than 60 seconds) to prevent a hung
+# powershell.exe from freezing the battery reading forever.
+if [ -e "$LOCK" ] && [ "$(($(date +%s) - $(stat -c %Y "$LOCK" 2>/dev/null || echo 0)))" -gt 60 ]; then
+  rm -f "$LOCK"
+fi
+
 if [ "$age" -gt "$MAX_AGE" ] && [ ! -e "$LOCK" ] && [ -x "$REFRESHER" ]; then
   touch "$LOCK"
   nohup "$REFRESHER" "$CACHE" "$LOCK" >/dev/null 2>&1 &
