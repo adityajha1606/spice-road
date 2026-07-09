@@ -40,7 +40,9 @@ git clone https://github.com/adityajha1606/spice-road.git
 cd spice-road
 ```
 
-From here, `docs/SETUP-GUIDE.md` walks through the rest - a manual install, start to finish, for WSL2 and Windows Terminal. Budget about 30 minutes. You can also run `./install.sh` for a fully automated setup.
+From here, `docs/SETUP-GUIDE.md` walks through the rest - a manual install, start to finish, for WSL2 and Windows Terminal. Budget about 30 minutes.
+
+You can also run the [automated installer](install.sh) (`./install.sh`) for a fully automated setup.
 
 ---
 
