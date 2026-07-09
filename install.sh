@@ -58,6 +58,7 @@ run() {
         echo -e "  ${YELLOW}[dry-run]${NC} $*"
         return 0
     fi
+    # shellcheck disable=SC2294
     eval "$@"
 }
 
@@ -136,6 +137,7 @@ detect_windows_username() {
 detect_font() {
     log "Detecting installed Nerd Fonts..."
     local font_list
+    # shellcheck disable=SC2016
     font_list=$(powershell.exe -NoProfile -Command \
         '(New-Object -ComObject Shell.Application).Namespace(0x14).Items() | % { $_.Name }' \
         2>/dev/null | tr -d '\r') || true
@@ -268,7 +270,7 @@ copy_runtime_files() {
     _copy_if_exists "welcome-banner.zsh"          "$HOME/.config/spice-road/welcome-banner.zsh"
     _copy_if_exists "banner-art.zsh"              "$HOME/.config/spice-road/banner-art.zsh"
     _copy_if_exists "weather-check.sh"            "$HOME/.config/spice-road/weather-check.sh"
-    _copy_if_exists "spice-prefetch.zsh"           "$HOME/.config/spice-road/spice-prefetch.sh"
+    _copy_if_exists "spice-prefetch.zsh"          "$HOME/.config/spice-road/spice-prefetch.zsh"
     _copy_if_exists "battery.sh"                  "$HOME/.config/starship-helpers/battery.sh"
     _copy_if_exists "battery-refresh.sh"          "$HOME/.config/starship-helpers/battery-refresh.sh"
     _copy_if_exists "fastfetch-config-full.jsonc" "$HOME/.config/fastfetch/config.jsonc"
@@ -529,6 +531,7 @@ maybe_enable_prefetch() {
             fi
 
             if $DRY_RUN; then
+                # shellcheck disable=SC2016
                 echo -e "  ${YELLOW}[dry-run]${NC} would insert prefetch hook near the top of .zshrc"
                 return
             fi
@@ -537,7 +540,7 @@ maybe_enable_prefetch() {
             tmp=$(mktemp)
             {
                 echo "$marker"
-                echo '[[ -f "$HOME/.config/spice-road/spice-prefetch.zsh" ]] && source "$HOME/.config/spice-road/spice-prefetch.sh"'
+                echo '[[ -f "$HOME/.config/spice-road/spice-prefetch.zsh" ]] && source "$HOME/.config/spice-road/spice-prefetch.zsh"'
                 echo ""
                 cat "$zshrc"
             } > "$tmp"
